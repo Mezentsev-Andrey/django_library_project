@@ -1,0 +1,23 @@
+{% extends 'library/base.html' %}
+
+{% block title %} Профиль пользователя {% endblock %}
+
+{% block content %}
+<div class="col-12">
+    <form method="post" class="row" enctype="multipart/form-data">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h3>Профиль</h3>
+            <div class="card">
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button Type="submit" class="btn btn-success">Сохранить</button>
+                    <a href="{% url 'library:book_list' %}" class="btn btn-warning" style="margin-top: 0px;"> Назад </a>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% endblock %}
+</div>

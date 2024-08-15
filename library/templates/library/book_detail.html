@@ -1,0 +1,40 @@
+{% extends 'library/base.html' %}
+{% load mediapath %}
+{% block title %}Информация о книге{% endblock %}
+
+{% block content %}
+
+<h1 align="center"> {{ book.title }} </h1>
+
+<div class="card px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="width: 24rem;">
+    <div class="card-body">
+        <img class="card-img-top" src="{% media_tag book.cover %}" alt="Обложка книги">
+        <h5 class="card-title">{{ book.nomination | upper}}</h5>
+        <p class="card-text">Автор: {{ book.author }}</p>
+        <p class="card-text">Жанр: {{ book.genre }}</p>
+        <p class="card-text">Аннотация: {{ book.description }}</p>
+
+        {% if user.is_authenticated %}
+        {% if user.is_superuser or user.is_librarian %}
+        <a href="{% url 'library:book_update' book.pk %}" class="btn btn-warning">Редактировать</a>
+        <a href="{% url 'library:book_delete' book.pk %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
+
+        {% if user.is_reader %}
+        {% if book.id in borrowed_books %}
+        <a href="{% url 'library:return_book' book.id %}" class="btn btn-danger">Вернуть книгу</a>
+        {% else %}
+        <a href="{% url 'library:borrow_book' book.id %}" class="btn btn-success">Взять книгу</a>
+        {% endif %}
+        {% endif %}
+
+        <a href="{% url 'library:book_list' %}" class="btn btn-secondary">Назад</a>
+        {% else %}
+        <a href="{% url 'library:borrow_book' book.id %}" class="btn btn-success">Взять книгу</a>
+        <a href="{% url 'library:book_list' %}" class="btn btn-secondary">Назад</a>
+        {% endif %}
+
+
+    </div>
+</div>
+{% endblock %}

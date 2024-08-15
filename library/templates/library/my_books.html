@@ -1,0 +1,31 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Мои книги{% endblock %}
+
+{% block content %}
+<h2>Мои книги</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Название книги</th>
+        <th>Дата выдачи</th>
+        <th>Дни с момента выдачи</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for borrowed_book in unique_books %}
+    <tr>
+        <td>{{ borrowed_book.book.title }}</td>
+        <td>{{ borrowed_book.borrowed_date }}</td>
+        <td>{{ borrowed_book.days_borrowed }}</td>
+        <td>
+            <a href="{% url 'library:return_book' borrowed_book.book.id %}" class="btn btn-danger">Вернуть книгу</a>
+            <p class="text-muted">Книга взята для чтения</p>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+<a href="{% url 'library:book_list' %}" class="btn btn-warning">Назад</a>
+{% endblock %}

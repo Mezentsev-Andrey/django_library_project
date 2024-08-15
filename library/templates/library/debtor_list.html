@@ -1,0 +1,33 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Задолженность по книгам{% endblock %}
+
+{% block content %}
+<h2>Список должников</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Логин</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Адрес</th>
+            <th>Название</th>
+            <th>Дата выдачи</th>
+            <th>Дни с момента выдачи</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for debtor in debtors %}
+        <tr>
+            <td>{{ debtor.user.username }}</td>
+            <td>{{ debtor.user.first_name }}</td>
+            <td>{{ debtor.user.last_name }}</td>
+            <td>{{ debtor.user.address }}</td>
+            <td>{{ debtor.book.title }}</td>
+            <td>{{ debtor.borrowed_date }}</td>
+            <td>{{ debtor.debtor.minutes_borrowed }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

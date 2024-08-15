@@ -1,0 +1,50 @@
+{% extends 'library/base.html' %}
+{% load mediapath %}
+
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h4 class="display-4">Интернет-библиотека </h4>
+    <p class="lead"> Откройте двери в мир книг с нашей интернет-библиотекой! </p>
+
+    <h2>Каталог книг</h2>
+</div>
+{% if user.is_superuser or user.is_librarian %}
+<div class="col-12 mb-5 text-center">
+    <a class="w-20 btn btn-lg btn-outline-primary" href="{% url 'library:book_create' %}"> Добавить новую книгу </a>
+</div>
+{% endif %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for book in books %}
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 align="center" class="my-0 fw-normal">{{ book.title }}</h4>
+                </div>
+                <div class="card-body">
+                    <img class="card-img-top" src="{% media_tag book.cover %}">
+                    <h1 align="center" class="card-title pricing-card-title"></h1>
+                    <ul align="center" class="list-unstyled mt-3 mb-4">
+                        <li>Автор: {{ book.author }}</li>
+                        <li>
+                        <li> Жанр: {{ book.genre }}</li>
+                        <li>{{ book.description | truncatechars:100 }}</li>
+                    </ul>
+                    <a href="{% url 'library:book_detail' book.pk %}" class="w-100 btn btn-lg btn-outline-primary"> Подробнее</a>
+
+                    {% if user.is_superuser or user.is_librarian %}
+                    <a href="{% url 'library:book_update' book.pk %}" class="w-100 btn btn-lg btn-outline-success">
+                        Редактировать книгу </a>
+                    <a href="{% url 'library:book_delete' book.pk %}" class="w-100 btn btn-lg btn-outline-danger">
+                        Удалить книгу</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
