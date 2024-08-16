@@ -1,0 +1,94 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$8WbqU2PyStJMQ0OAGxDquT$kJptSgQeo4GTVh2st6Z//XUGXalok/w261X0VZujtyg=",
+      "last_login": "2024-08-15T11:49:54.590Z",
+      "is_superuser": true,
+      "email": "admin@admin.ru",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-14T13:58:35.272Z",
+      "username": "admin",
+      "role": "",
+      "employee_number": null,
+      "first_name": null,
+      "last_name": null,
+      "address": null,
+      "is_reader": false,
+      "is_librarian": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$LQAoPmeLZlODa3glR4hFc2$4SsLS4LqBl8TqsIdFT7AsAninLXlmw7VDuuWDVvadnU=",
+      "last_login": "2024-08-15T12:57:00.204Z",
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-08-14T14:01:09Z",
+      "username": "andrey",
+      "role": "reader",
+      "employee_number": null,
+      "first_name": "Андрей",
+      "last_name": "Мезенцев",
+      "address": "Краснодарский край, г. Новороссийск, ул. Героев Десантников д. 2,  кв. 29.",
+      "is_reader": true,
+      "is_librarian": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$BXrlrLdL8Sr0pLRQaZs1a6$Oc5TlCDZHPJv26tnUEn1bSfKdRDKpkNBdtDlYYKoRfw=",
+      "last_login": "2024-08-15T12:57:38.588Z",
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-08-15T11:37:41.451Z",
+      "username": "anastasia",
+      "role": "librarian",
+      "employee_number": "1234567890",
+      "first_name": "Анастасия",
+      "last_name": "Кузьмина",
+      "address": null,
+      "is_reader": false,
+      "is_librarian": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$QwAI2rNX7YZjDeMCKM3feX$5bYhmWwoesKgklBaRukmzRddKb1HggACbzfupRGPBBU=",
+      "last_login": "2024-08-15T12:53:29.955Z",
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-08-15T11:41:41.859Z",
+      "username": "alexey",
+      "role": "reader",
+      "employee_number": null,
+      "first_name": "Алексей",
+      "last_name": "Шилов",
+      "address": "Ростовская область, г. Ростов-на-Дону, ул. 50 лет Ростсельмаша д. 1, кв. 15.",
+      "is_reader": true,
+      "is_librarian": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

@@ -1,5 +1,6 @@
 from django.forms import forms
 from django.forms.fields import BooleanField
+
 from library.models import Book
 
 
@@ -12,9 +13,9 @@ class StyleFormMixin:
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             if isinstance(field, BooleanField):
-                field.widget.attrs['class'] = 'form-check-input'
+                field.widget.attrs["class"] = "form-check-input"
             else:
-                field.widget.attrs['class'] = 'form-control'
+                field.widget.attrs["class"] = "form-control"
 
 
 class BookForm(StyleFormMixin, forms.ModelForm):
@@ -24,4 +25,4 @@ class BookForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ('title', 'author', 'genre', 'description')
+        fields = ("title", "author", "genre", "description")

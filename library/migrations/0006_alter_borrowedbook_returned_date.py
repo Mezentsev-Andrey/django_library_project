@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0005_alter_borrowedbook_borrowed_date'),
+        ("library", "0005_alter_borrowedbook_borrowed_date"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='borrowedbook',
-            name='returned_date',
-            field=models.DateTimeField(blank=True, null=True, verbose_name='Дата возврата книги'),
+            model_name="borrowedbook",
+            name="returned_date",
+            field=models.DateTimeField(
+                blank=True, null=True, verbose_name="Дата возврата книги"
+            ),
         ),
     ]

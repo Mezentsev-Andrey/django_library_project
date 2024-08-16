@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='is_librarian',
-            field=models.BooleanField(default=False, verbose_name='Библиотекарь'),
+            model_name="user",
+            name="is_librarian",
+            field=models.BooleanField(default=False, verbose_name="Библиотекарь"),
         ),
         migrations.AddField(
-            model_name='user',
-            name='is_reader',
-            field=models.BooleanField(default=False, verbose_name='Читатель'),
+            model_name="user",
+            name="is_reader",
+            field=models.BooleanField(default=False, verbose_name="Читатель"),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='username',
-            field=models.CharField(max_length=30, unique=True, verbose_name='Логин'),
+            model_name="user",
+            name="username",
+            field=models.CharField(max_length=30, unique=True, verbose_name="Логин"),
         ),
     ]

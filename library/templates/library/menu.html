@@ -10,7 +10,7 @@
         {% if user.is_reader %}
         <a href="{% url 'library:my_books' %}" class="p-2 btn btn-outline-dark">Мои книги</a>
         {% elif user.is_librarian %}
-        <a href="{% url 'library:debtor_books' %}" class="p-2 btn btn-outline-dark">Задолженность</a>
+        <a href="{% url 'library:debtor_books' %}" class="p-2 btn btn-outline-dark">Должники книг</a>
         {% endif %}
         <form method="post" action="{% url 'users:logout' %}">
             {% csrf_token %}

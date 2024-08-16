@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-NULLABLE = {'blank': True, 'null': True}
+NULLABLE = {"blank": True, "null": True}
 
 
 class User(AbstractUser):
@@ -9,20 +9,24 @@ class User(AbstractUser):
     Модель пользователя.
     """
 
-    LIBRARIAN = 'librarian'
-    READER = 'reader'
+    LIBRARIAN = "librarian"
+    READER = "reader"
 
     ROLE_CHOICES = [
-        (LIBRARIAN, 'Библиотекарь'),
-        (READER, 'Читатель'),
+        (LIBRARIAN, "Библиотекарь"),
+        (READER, "Читатель"),
     ]
 
-    username = models.CharField(max_length=30, unique=True, verbose_name='Логин')
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES, verbose_name='Тип пользователя')
-    employee_number = models.CharField(max_length=20, verbose_name='Табельный номер', **NULLABLE)  # Только для библиотекаря
-    first_name = models.CharField(max_length=30, verbose_name='Имя', **NULLABLE)  # Только для читателя
-    last_name = models.CharField(max_length=30, verbose_name='Фамилия', **NULLABLE)  # Только для читателя
-    address = models.TextField(verbose_name='Адрес', **NULLABLE)  # Только для читателя
+    username = models.CharField(max_length=30, unique=True, verbose_name="Логин")
+    role = models.CharField(
+        max_length=10, choices=ROLE_CHOICES, verbose_name="Тип пользователя"
+    )
+    employee_number = models.CharField(
+        max_length=20, verbose_name="Табельный номер", **NULLABLE
+    )
+    first_name = models.CharField(max_length=30, verbose_name="Имя", **NULLABLE)
+    last_name = models.CharField(max_length=30, verbose_name="Фамилия", **NULLABLE)
+    address = models.TextField(verbose_name="Адрес", **NULLABLE)
     is_reader = models.BooleanField(default=False, verbose_name="Читатель")
     is_librarian = models.BooleanField(default=False, verbose_name="Библиотекарь")
 
@@ -30,5 +34,5 @@ class User(AbstractUser):
         return f"{self.username}"
 
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
