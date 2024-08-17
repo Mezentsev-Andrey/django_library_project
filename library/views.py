@@ -17,13 +17,13 @@ class MyBooksView(generic.ListView):
     model = BorrowedBook
     template_name = "library/my_books.html"
     context_object_name = "borrowed_books"
-    ordering = ["title"]
 
     def get_queryset(self):
         """
-        Возвращает набор данных с книгами, заимствованными текущим пользователем.
+        Возвращает набор данных с книгами, заимствованными текущим пользователем,
+        отсортированными по названию книги.
         """
-        return BorrowedBook.objects.filter(user=self.request.user)
+        return BorrowedBook.objects.filter(user=self.request.user).order_by('book__title')
 
     def get_context_data(self, **kwargs) -> dict:
         """
